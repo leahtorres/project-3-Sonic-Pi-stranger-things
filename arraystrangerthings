@@ -1,0 +1,39 @@
+# Stranger Things Main Theme
+# NOTE: Each measure's total sleep adds up to 4 because the time signature is 4/4
+use_bpm 160
+use_synth :saw
+#there is a live_loop that will eternitly play the notes that are in the array
+live_loop :main_theme do
+  with_fx :distortion do
+    # First set of eighth notes
+    #nbc_notes is the array
+    nbc_notes = [:c2, :e2, :g2, :b2, :c3, :b2, :g2, :e2]
+    #This is the access elements of an array using their index, total of 8 starting with 0
+    play nbc_notes[0]
+    sleep 0.5
+    play nbc_notes[1]
+    sleep 0.5
+    play nbc_notes [2]
+    sleep 0.5
+    play nbc_notes [3]
+    sleep 0.5
+    # Second set of eigth notes
+    play nbc_notes[4]
+    sleep 0.5
+    play nbc_notes[5]
+    sleep 0.5
+    play nbc_notes [6]
+    sleep 0.5
+    play nbc_notes [7]
+    sleep 0.5
+  end
+end
+live_loop :drums do
+  sleep 2
+  sample :bd_808, amp: 100
+  sleep 3.5
+  sample :bd_808, amp: 100, sustain: 0.25
+  sleep 0.5
+  sample :bd_808, amp: 100
+  sleep 2
+end
