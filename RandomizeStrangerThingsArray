@@ -2,8 +2,9 @@ use_bpm 160
 use_synth :saw
 notes_array = [:c2, :e2, :g2, :b2, :c3, :b2, :g2, :e2]
 loop do
-  play notes_array.choose
-  print notes_array.choose
+  l = choose(notes_array)
+  play l
+  print l
   sleep 1
 end
 a = notes_array.choose
@@ -13,11 +14,12 @@ live_loop :strategy1 do
   play a
   sleep 0.5
 end
+
 live_loop :strategy2 do
   # assign a value to 'b' that will be used as the index value
-  b = notes_array[dice(8)-1]
+  b = dice(8)-1
   print b
-  play [b]
+  play notes_array[b]
   sleep 0.5
 end
 live_loop :strategy3 do
