@@ -1,31 +1,31 @@
+=begin
+#This is parameterise with stranger things
+TASK 1: Define a function that has 5 parameters (four notes and one sleep time). Hit "Run" and nothing should play.
+
+TASK 2: Call your function and give it five arguments (the four notes on lines 16, 18, 20, & 22 plus the sleep time). Hit run and you should hear four notes play.
+
+TASK 3: Call your function twice in a live_loop so the entire Stranger Things Theme repeats.
+
+=end
+
 use_bpm 160
 use_synth :saw
-notes_array = [:c2, :e2, :g2, :b2, :c3, :b2, :g2, :e2]
-loop do
-  l = choose(notes_array)
+#define your function with parameters
+define :play_eighth_notes do |n, m, k, l, a|
+  play n
+  sleep a
+  play m
+  sleep a
+  play k
+  sleep a
   play l
-  print l
-  sleep 1
-end
-a = notes_array.choose
-live_loop :strategy1 do
-  # assign a value to 'a' using the .choose method from the Randomisation reading on Tuesday
-  print a
-  play a
-  sleep 0.5
+  sleep a
 end
 
-live_loop :strategy2 do
-  # assign a value to 'b' that will be used as the index value
-  b = dice(8)-1
-  print b
-  play notes_array[b]
-  sleep 0.5
+#call your function with the notes you want to play as arguments
+live_loop :repeat_melody do
+  2. times do
+    play_eighth_notes :c2, :e2, :g2, :b2, 0.5
+  end
 end
-live_loop :strategy3 do
-  # assign a value to 'c' that will be used as the index value
-  c = rrand_i(0,7)
-  print c
-  play notes_array[c]
-  sleep 0.5
-end
+
